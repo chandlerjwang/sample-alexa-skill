@@ -1,0 +1,370 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "movie now",
+            "intents": [
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CaptureGenreIntent",
+                    "slots": [
+                        {
+                            "name": "genre",
+                            "type": "AMAZON.Genre"
+                        }
+                    ],
+                    "samples": [
+                        "I enjoy {genre} type movie",
+                        "I like {genre} type film",
+                        "I like {genre} type movie",
+                        "I enjoy watching {genre}",
+                        "{genre}",
+                        "I love {genre}",
+                        "I enjoy {genre}",
+                        "I like {genre}"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "CaptureActorIntent",
+                    "slots": [
+                        {
+                            "name": "actor",
+                            "type": "AMAZON.Actor"
+                        }
+                    ],
+                    "samples": [
+                        "my favorite actress is {actor}",
+                        "I love {actor}",
+                        "I really like {actor}",
+                        "I'm a fan of {actor}",
+                        "my favorite actor is {actor}"
+                    ]
+                },
+                {
+                    "name": "RecommendMovieIntent",
+                    "slots": [],
+                    "samples": [
+                        "recommend another movie",
+                        "pick another movie",
+                        "recommend another one",
+                        "pick another one",
+                        "I need a movie recommendation",
+                        "I need a movie suggestion",
+                        "watch a movie",
+                        "choose something for me",
+                        "I have no idea",
+                        "I'm flexible",
+                        "I don't have a strong preference",
+                        "I'm not sure",
+                        "I don't know",
+                        "not sure",
+                        "choose a movie",
+                        "give me a movie to watch",
+                        "pick a movie for me",
+                        "recommend a movie",
+                        "surprise me please",
+                        "choose one for me please",
+                        "pick something for me",
+                        "surprise me",
+                        "pick one for me"
+                    ]
+                },
+                {
+                    "name": "CaptureRatingIntent",
+                    "slots": [
+                        {
+                            "name": "rating",
+                            "type": "AMAZON.AggregateRating",
+                            "samples": [
+                                "{rating} star",
+                                "{rating}",
+                                "It was a {rating} movie",
+                                "It was {rating}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Loved it",
+                        "totally a {rating} movie",
+                        "{rating} star for sure",
+                        "it was a {rating} star movie",
+                        "{rating} star",
+                        "I liked it very much",
+                        "I enjoyed it a lot",
+                        "It was fantastic",
+                        "Love it",
+                        "It was great",
+                        "I didn't like it",
+                        "I like it",
+                        "could be {rating}",
+                        "{rating} i think",
+                        "{rating} i guess",
+                        "not sure i think it was {rating}",
+                        "not sure guess it was {rating}",
+                        "not sure it was {rating} ",
+                        "not sure it was {rating} i guess",
+                        "I {rating} it",
+                        "The movie was {rating}",
+                        "I thought it was {rating}",
+                        "It was {rating}"
+                    ]
+                },
+                {
+                    "name": "CapturePreferenceIntent",
+                    "slots": [
+                        {
+                            "name": "preference",
+                            "type": "AMAZON.AggregateRating",
+                            "samples": [
+                                "I prefer something {preference}",
+                                "recommend something {preference}",
+                                "something {preference}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "just pick one {preference}",
+                        "pick something {preference}",
+                        "I prefer something {preference}",
+                        "just pick something {preference}",
+                        "I like something {preference}",
+                        "something {preference}",
+                        "recommend something {preference}",
+                        "I'll go with {preference}",
+                        "give me something {preference}"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CaptureGenreIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "genre",
+                            "type": "AMAZON.Genre",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.257376452559.692601992677"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "CaptureActorIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "actor",
+                            "type": "AMAZON.Actor",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1138685450026.1049275122132"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "CaptureRatingIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "rating",
+                            "type": "AMAZON.AggregateRating",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.495775054576.715992667764"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isNotInSet",
+                                    "prompt": "Slot.Validation.1482132164445.1288483894245.603423668099",
+                                    "values": [
+                                        "I'm not sure",
+                                        "not sure",
+                                        "I don't know",
+                                        "it's hard to say"
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "RecommendMovieIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": []
+                },
+                {
+                    "name": "CapturePreferenceIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "preference",
+                            "type": "AMAZON.AggregateRating",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.443565921781.231394735839"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.257376452559.692601992677",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I really like action movie these days, what type of movies do you like?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "I really enjoy {genre} these days, what about you?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1138685450026.1049275122132",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I'm a fan of Tom Cruise these days, what about you?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1138685450026.596041879948",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I'm a fan of Scarlett Johansson these days, what about you?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1043507505808.886432205388",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I like something classic like star wars, what about you?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "I like something recent, what about you?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1554876560525.447497230623",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I prefer something classic, what about you?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.495775054576.715992667764",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Can you rate it using a scale of one to five star?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.829917993671.1518214706546.926899658767",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I can recommend something highly rated, classic, trendy or old. Which one do you prefer?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "I can recommend something popular, classic, trendy or new. Which one do you prefer?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.126856300271.921668387184",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I can recommend something popular, classic, trendy or new. Which one do you prefer?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "I can recommend something highly rated, classic, trendy or old. Which one do you prefer?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.443565921781.231394735839",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I can recommend something popular, classic, trendy, new or random. Which one do you prefer?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "I can recommend something popular, classic, trendy or new. Which one do you prefer?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "I can recommend something highly rated, classic, trendy or old. Which one do you prefer?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1482132164445.1288483894245.603423668099",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Can you rate it using a scale of one to five star?"
+                    }
+                ]
+            }
+        ]
+    }
+}

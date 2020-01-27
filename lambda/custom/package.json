@@ -1,0 +1,20 @@
+{
+  "name": "movienow",
+  "version": "1.1.0",
+  "description": "Movie Now is a sample Alexa Skill that can learn about the user's movie preferences such as favorite genres or actors, then recommends movies users will enjoy!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chandler Wang",
+  "license": "ISC",
+  "dependencies": {
+    "ask-sdk-core": "^2.6.0",
+    "ask-sdk-model": "^1.18.0",
+    "aws-sdk": "^2.326.0",
+    "i18next": "^19.0.3",
+    "i18next-sprintf-postprocessor": "^0.2.2",
+    "ask-sdk-s3-persistence-adapter": "^2.7.0",
+    "ask-sdk-dynamodb-persistence-adapter": "^2.7.0"
+  }
+}
