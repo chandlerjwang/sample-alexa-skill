@@ -2,6 +2,8 @@
 
 Movie Now is a sample Alexa Skill that can learn about the user's movie preferences such as favorite genres or actors, then recommends movies users will enjoy!
 
+If the user wants to skip the series of questions they can say things like "Surprise me" or "pick one for me" and the skill will intelligently pick a movie at random or based on saved preferences. Further, the skill asks all returned users (based on distinct deviceID) to rate the previous recommendation and incorporates that rating for future suggestions. In this way, the skill can evolve and learns the users' preferences and make better and more personalized recommendations.
+
 ## Example Phrases
 
 - "I like Comedy"
