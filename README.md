@@ -30,6 +30,8 @@ If the user wants to skip the series of questions they can say things like "Surp
 
 - Development: faster local development (not having to deploy to prod everytime a change is made)
 - IDE: more integrated dev env similar to Xcode
+- Auto-build: keep saving and building as changes are made
+- Error Handling: Deploy doesn’t currently flag syntax error like colon in Node.js and can finish successfully
 - Simulator: more robust outputs/logs from simulator
 - Naive Handlers: provide more optiosn to augment to AMAZON.YesIntent to handle more scenarios where users might say yes
 
