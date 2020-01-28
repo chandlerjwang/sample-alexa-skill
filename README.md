@@ -6,6 +6,9 @@ If the user wants to skip the series of questions they can say things like "Surp
 
 ## Example Phrases
 
+- "ask Movie now to pick a movie"
+- "tell Movie now I want to watch a movie"
+- "tell Movie now I like comedy"
 - "I like Comedy"
 - "I'm a fan of Tom Cruise"
 - "Surprise me!"
@@ -15,10 +18,13 @@ If the user wants to skip the series of questions they can say things like "Surp
 
 ## Future Releases & Optimization
 
-- Testing: Add automated testing for Voice (unit, integration and UATs)
+- Account Linking: link to user's movie accounts such as Netflix or Disney+ in order to actually "play" a movie after user accepts the skill's recommendations
+- Testing: Add more annotation set for NLU evaluation, leverage Utterance Profiler and create automated testings (unit, integration and UATs)
+- Utterances: add more utterances and variations with different slots to intents
+- Intents: optimize intents by adding more accurate utterances
+- Voice: Add more intents to handle additional voice interactions
 - Data: Integrate with real movie dataset
 - Machine Learning: Refine personalization for movie recommendation based on persisted user preferences
-- Voice: Add more intents to handle additional voice interactions
 
 ## ASK Improvement Suggestions
 
@@ -41,4 +47,6 @@ If the user wants to skip the series of questions they can say things like "Surp
 - [Interceptors](https://developer.amazon.com/blogs/alexa/post/0e2015e1-8be3-4513-94cb-da000c2c9db0/what-s-new-with-request-and-response-interceptors-in-the-alexa-skills-kit-sdk-for-node-js)
 - [Intents, Utterances, and Slots](https://developer.amazon.com/en-US/docs/alexa/custom-skills/create-intents-utterances-and-slots.html#intent-name)
 - [SDK on Github](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs)
-
+- [Account Linking](https://developer.amazon.com/en-US/docs/alexa/account-linking/understand-account-linking.html)
+- [NLU Evaluation & Annotation Set](https://developer.amazon.com/en-US/docs/alexa/custom-skills/batch-test-your-nlu-model.html)
+- [Utterance Profiler](https://developer.amazon.com/en-US/docs/alexa/custom-skills/test-utterances-and-improve-your-interaction-model.html)
