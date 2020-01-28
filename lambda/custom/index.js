@@ -116,7 +116,7 @@ const CaptureGenreIntentHandler = {
         // recommend movie based on new preference
         let movie = recommendMovieNow(attributesManager, 'favGenres');
         
-        const speechOutput = `Great, I'm a fan of ${genre} movie as well. ${recommendMovieNowSpeakOutput(movie)}. What else can I help today?`;
+        const speechOutput = `Great, I'm a fan of ${genre} movie as well. ${recommendMovieNowSpeakOutput(movie)}. What other movie do you like?`;
 
         return responseBuilder.speak(speechOutput).reprompt(speechOutput).getResponse();
     },
@@ -224,7 +224,7 @@ const CaptureRatingIntentHandler = {
                 movie.userRating = rating;
                 
                 attributesManager.setSessionAttributes(sessionAttributes);
-                speechOutput = `Great, thanks for rating ${movie.name}! How can I help today?`;
+                speechOutput = `Great, thanks for rating ${movie.name}! What type of movie do you want to watch today?`;
                 break;
             }
         }

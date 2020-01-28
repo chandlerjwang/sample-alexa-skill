@@ -36,6 +36,9 @@
                         }
                     ],
                     "samples": [
+                        "i want to watch {genre} movie",
+                        "i want to watch a {genre} ",
+                        "i want to watch a {genre} movie",
                         "I enjoy {genre} type movie",
                         "I like {genre} type film",
                         "I like {genre} type movie",
@@ -59,6 +62,8 @@
                         }
                     ],
                     "samples": [
+                        "i want to watch {actor} movie",
+                        "i want to watch a {actor} movie",
                         "my favorite actress is {actor}",
                         "I love {actor}",
                         "I really like {actor}",
@@ -70,6 +75,15 @@
                     "name": "RecommendMovieIntent",
                     "slots": [],
                     "samples": [
+                        "any other movie to watch",
+                        "any other suggestion",
+                        "any other recommendation",
+                        "anything else",
+                        "can you choose a movie for me",
+                        "can you pick a movie",
+                        "can you recommend a movie",
+                        "i'm not sure what to watch",
+                        "I'm not sure what i want",
                         "recommend another movie",
                         "pick another movie",
                         "recommend another one",
@@ -149,6 +163,12 @@
                         }
                     ],
                     "samples": [
+                        "can you pick something {preference}",
+                        "can you choose something {preference}",
+                        "can you recommend something {preference}",
+                        "i want something {preference}",
+                        "I want to watch something {preference}",
+                        "I want to watch a {preference} movie",
                         "just pick one {preference}",
                         "pick something {preference}",
                         "I prefer something {preference}",
