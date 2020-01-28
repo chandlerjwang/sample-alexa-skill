@@ -13,6 +13,20 @@ If the user wants to skip the series of questions they can say things like "Surp
 - "Pick another one for me"
 - "Something classic"
 
+## Future Releases & Optimization
+
+- Testing: Add automated testing for Voice (unit, integration and UATs)
+- Data: Integrate with real movie dataset
+- Machine Learning: Refine personalization for movie recommendation based on persisted user preferences
+- Voice: Add more intents to handle additional voice interactions
+
+## ASK Improvement Suggestions
+
+- Development: faster local development (not having to deploy to prod everytime a change is made)
+- IDE: more integrated dev env similar to Xcode
+- Simulator: more robust outputs/logs from simulator
+- Naive Handlers: provide more optiosn to augment to AMAZON.YesIntent to handle more scenarios where users might say yes
+
 ## Technical Documentation & Related Resources
 
 - [Traning Courses](https://developer.amazon.com/en-US/alexa/alexa-skills-kit/resources/training-resources/)
