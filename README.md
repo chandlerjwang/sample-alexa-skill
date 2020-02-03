@@ -25,7 +25,7 @@ If the user wants to skip the series of questions they can say things like "Surp
 - Voice: Add more intents to handle additional voice interactions
 - Data: Integrate with real movie dataset
 - Machine Learning: Refine personalization for movie recommendation based on persisted user preferences
-- Context Management/Persistence for User Yes&No Intent Handling
+- State Management/Persistence for User Yes&No Intent Handling
 
 ## ASK Improvement Suggestions
 
