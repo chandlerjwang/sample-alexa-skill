@@ -25,6 +25,7 @@ If the user wants to skip the series of questions they can say things like "Surp
 - Voice: Add more intents to handle additional voice interactions
 - Data: Integrate with real movie dataset
 - Machine Learning: Refine personalization for movie recommendation based on persisted user preferences
+- Context Management/Persistence for User Yes&No Intent Handling
 
 ## ASK Improvement Suggestions
 
@@ -52,3 +53,5 @@ If the user wants to skip the series of questions they can say things like "Surp
 - [Account Linking](https://developer.amazon.com/en-US/docs/alexa/account-linking/understand-account-linking.html)
 - [NLU Evaluation & Annotation Set](https://developer.amazon.com/en-US/docs/alexa/custom-skills/batch-test-your-nlu-model.html)
 - [Utterance Profiler](https://developer.amazon.com/en-US/docs/alexa/custom-skills/test-utterances-and-improve-your-interaction-model.html)
+- [YES/NO Intent](https://developer.amazon.com/blogs/alexa/post/2a70a910-7083-423a-bc12-ea1ae9f5e5a2/using-yes-no-intents-with-dialog-management)
+- [Dialog Management](https://developer.amazon.com/en-US/docs/alexa/custom-skills/dialog-interface-reference.html#confirmintent)
