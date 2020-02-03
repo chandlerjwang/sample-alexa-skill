@@ -620,6 +620,7 @@ const PersistenceResponseInterceptor = {
 
 const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
+    .withSkillId(process.env.SKILLID)
     .withPersistenceAdapter(persistenceAdapter)
     .addRequestHandlers(
         ReturnUserHandler,
