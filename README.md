@@ -18,13 +18,13 @@ If the user wants to skip the series of questions they can say things like "Surp
 
 ## Future Releases & Optimization
 
-- [] Account Linking: link to user's movie accounts such as Netflix or Disney+ in order to actually "play" a movie after user accepts the skill's recommendations
-- [] Testing: Add more annotation set for NLU evaluation, leverage Utterance Profiler and create automated testings (unit, integration and UATs)
+- [ ] Account Linking: link to user's movie accounts such as Netflix or Disney+ in order to actually "play" a movie after user accepts the skill's recommendations
+- [ ] Testing: Add more annotation set for NLU evaluation, leverage Utterance Profiler and create automated testings (unit, integration and UATs)
 - [x] Utterances: add more utterances and variations with different slots to intents
 - [x] Intents: optimize intents by adding more accurate utterances
-- [] Voice: Add more intents to handle additional voice interactions
-- [] Data: Integrate with real movie dataset
-- [] Machine Learning: Refine personalization for movie recommendation based on persisted user preferences
+- [ ] Voice: Add more intents to handle additional voice interactions
+- [ ] Data: Integrate with real movie dataset
+- [ ] Machine Learning: Refine personalization for movie recommendation based on persisted user preferences
 - [x] State Management/Persistence for User Yes&No Intent Handling 
 
 ## ASK Improvement Suggestions
