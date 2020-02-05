@@ -91,6 +91,7 @@ const ReturnUserHandler = {
             // Lookup previous recommended movies that hasn't been rated by user
             if (!movie.userRated) {
                 speakOutput = `Welcome back! Hopefully you watched ${movie.name} I recommended last time. Can you rate it please?`;
+                setCurrentUserState(attributesManager, 'RATING');
                 break;
             }
         }
@@ -168,7 +169,8 @@ const RecommendMovieIntentHandler = {
             selector = 'I recently watched lots of movies on Netflix';
         }
         
-        const speechOutput = `Hmmm, ${selector}, I think you will definitely like this one! ${recommendMovieNowSpeakOutput(movie)}. What else can I help today?`;
+        const speechOutput = `Hmmm, ${selector}, I think you will definitely like this one! ${recommendMovieNowSpeakOutput(movie)}. Would you like another recommendation?`;
+        setCurrentUserState(attributesManager, 'RECOMMENDING');
         
         return responseBuilder.speak(speechOutput).getResponse();        
     },
@@ -225,6 +227,7 @@ const CaptureRatingIntentHandler = {
                 
                 attributesManager.setSessionAttributes(sessionAttributes);
                 speechOutput = `Great, thanks for rating ${movie.name}! What type of movie do you want to watch today?`;
+                setCurrentUserState(attributesManager, 'DEFAULT');
                 break;
             }
         }
@@ -233,19 +236,55 @@ const CaptureRatingIntentHandler = {
     },
 };
 
-const YesHandler = {
+const YesNoHandler = {
     canHandle(handlerInput) {
         const request = handlerInput.requestEnvelope.request;
 
-        return request.type === 'IntentRequest' && request.intent.name === 'AMAZON.YesIntent';
+        return request.type === 'IntentRequest' && (request.intent.name === 'AMAZON.YesIntent' || request.intent.name === 'AMAZON.NoIntent');
     },
     handle(handlerInput) {
-        const responseBuilder = handlerInput.responseBuilder;
+        const responseBuilder   = handlerInput.responseBuilder;
+        const attributesManager = handlerInput.attributesManager;
+        const sessionAttributes = attributesManager.getSessionAttributes();
+        const requestName       = handlerInput.requestEnvelope.request.intent.name;
+        const userState  = sessionAttributes['userState'];
+
+        let speechOutput = '';
+
+        //Handle yes and no intents based on current state persisted via session attributes
+        switch(userState) {
+            case 'RATING':
+                if (requestName === 'AMAZON.YesIntent') {
+                    speechOutput = `You can rate it by telling me how you feel about the movie or just using a scale of one to five star. What do you think?`;   
+                } else {
+                    speechOutput = `No problem - Next time perhaps. Rating allows me to better understand your preferences
+                                    and makes my movie recommendation better each time! What type of movie do you want to watch today?`;
+                }     
+                
+                break;
+            case 'RECOMMENDING':
+                if (requestName === 'AMAZON.YesIntent') {
+                    //intent chaining for dialog management
+                    return responseBuilder
+                            .addDelegateDirective({
+                                name: 'RecommendMovieIntent',
+                                confirmationStatus: 'NONE',
+            			        slots: {}
+                            })
+                            .getResponse();                
+                } else {
+                    speechOutput = 'Ok, what else can I help today?';
+                }     
+                
+                break;
+            default:
+                speechOutput = `Yes or No to what?`;
+        }
         
-        const speechOutput    = `You can rate it by telling me how you feel about the movie or just using a scale of one to five star. What do you think?`;
-        const repromptOutput  = 'I thought my last recommendation was pretty good. What do you think?';
-        
-        return responseBuilder.speak(speechOutput).reprompt(repromptOutput).getResponse();      
+        return responseBuilder
+                .speak(speechOutput)
+                .addDelegateDirective()
+                .getResponse();
     },
 };
 
@@ -273,8 +312,7 @@ const StopHandler = {
         const request = handlerInput.requestEnvelope.request;
 
         return request.type === 'IntentRequest'
-            && (request.intent.name === 'AMAZON.NoIntent'
-            || request.intent.name === 'AMAZON.CancelIntent'
+            && (request.intent.name === 'AMAZON.CancelIntent'
             || request.intent.name === 'AMAZON.StopIntent');
     },
     handle(handlerInput) {
@@ -419,8 +457,8 @@ const data = {
     ],
 };
 
-const SKILL_NAME = 'Movie Now';
-const FALLBACK_MESSAGE = `The ${SKILL_NAME} skill can help you pick a great movie to watch by learning your preferences such as your favorite movie genres or actors. What type of movie do you like?`;
+const SKILL_NAME        = 'Movie Now';
+const FALLBACK_MESSAGE  = `The ${SKILL_NAME} skill can help you pick a great movie to watch by learning your preferences such as your favorite movie genres or actors. What type of movie do you like?`;
 const FALLBACK_REPROMPT = 'I`m a fan of sci-fi movies, what about you?';
 
 
@@ -465,6 +503,14 @@ function saveUserAttributes(attributesManager, key, attributes) {
         sessionAttributes[key] = [attributes];
     }
 
+    attributesManager.setSessionAttributes(sessionAttributes);
+}
+
+function setCurrentUserState(attributesManager, key) {
+    const sessionAttributes = attributesManager.getSessionAttributes();
+    
+    sessionAttributes['userState'] = key;
+    
     attributesManager.setSessionAttributes(sessionAttributes);
 }
 
@@ -577,8 +623,14 @@ const PersistenceRequestInterceptor = {
                       if (!persistentAttributes['launchCount']) {
                         persistentAttributes['launchCount'] = 0;
                       }
-                      
                       persistentAttributes['launchCount'] += 1; 
+                      
+                      // use session attribute to manage user state
+                      if (!persistentAttributes['userState']) {
+                          persistentAttributes['userState'] = 'LAUNCH';
+                      }
+                      persistentAttributes['userState'] = 'LAUNCH';
+                      
                       handlerInput.attributesManager.setSessionAttributes(persistentAttributes); 
                       resolve();
                   })
@@ -630,7 +682,7 @@ exports.handler = skillBuilder
         RecommendMovieIntentHandler,
         CapturePreferenceIntentHandler,
         CaptureRatingIntentHandler,
-        YesHandler,
+        YesNoHandler,
         HelpHandler,
         StopHandler,
         FallbackHandler,
